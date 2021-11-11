@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="background">
     <app-bar title="平安成电智慧通行" />
     <div :class="'homepage ' + (loading ? 'loading' : '')">
       <div class="snack-bar" :class="hiddenLoading && showSnack ? '' : 'snack-bar-hidden'">
         <md-toolbar class="md-elevation-5 snack-content">
-          <div style="flex: 1">授权有效！</div>
+          <div style="flex: 1">研究生用户，入校授权有效！</div>
           <md-button class="md-icon-button md-primary" @click="showSnack = false">关闭</md-button>
         </md-toolbar>
       </div>
@@ -136,7 +136,12 @@ export default {
   }
 }
 
+.background{
+  background: #f8f8f8;
+}
+
 .homepage {
+  background: white;
   display: flex;
   justify-content: center;
   padding-top: 40px;
@@ -244,7 +249,7 @@ export default {
 
   &.loading {
     .spinner {
-      transform: translateY(40vh);
+      // transform: translateY(40vh);
 
       .spinner-text {
         opacity: 0;
@@ -252,5 +257,4 @@ export default {
     }
   }
 }
-
 </style>
