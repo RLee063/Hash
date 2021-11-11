@@ -103,10 +103,10 @@ export default {
           setTimeout(() => {
 
             this.showSnack = false
-          }, 3000)
-        }, 500);
-      }, 1000);
-    }, 1000);
+          }, 9000)
+        }, 1500);
+      }, 3000);
+    }, 3000);
 
 
     // load name
@@ -120,7 +120,7 @@ export default {
     const date = [rawDate.getFullYear(), rawDate.getMonth() + 1, rawDate.getDate()].map(v => v.toString().padStart(2, '0')).join('-')
     const time = [hour, minutes, seconds].map(v => v.toString().padStart(2, '0')).join(':')
 
-    this.timeStr = `${date} ${time}`
+    this.timeStr = date + "    " + time
   },
 
   methods: {

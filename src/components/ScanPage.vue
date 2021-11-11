@@ -62,7 +62,7 @@ export default {
     setupVideo(video).then(() => {
       setTimeout(() => {
         this.$router.replace('./login')
-      }, 1000)
+      }, 4000)
     }).catch(() => {
       alert("打开摄像头出错！")
     })
