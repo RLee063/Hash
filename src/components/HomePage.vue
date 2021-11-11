@@ -1,7 +1,11 @@
 <template>
-  <div class="background">
+  <div>
     <app-bar title="平安成电智慧通行" />
-    <div :class="'homepage ' + (loading ? 'loading' : '')">
+    <div :class="'homepage ' + (loading ? 'loading' : '')" id="home">
+      <div class="spinner-init" v-if="init">
+        <md-progress-spinner class="md-primary" :md-stroke="4"
+          :md-diameter="50" md-mode="indeterminate"></md-progress-spinner>
+      </div>
       <div class="snack-bar" :class="hiddenLoading && showSnack ? '' : 'snack-bar-hidden'">
         <md-toolbar class="md-elevation-5 snack-content">
           <div style="flex: 1">研究生用户，入校授权有效！</div>
@@ -9,7 +13,7 @@
         </md-toolbar>
       </div>
 
-      <div class="spinner" v-if="!hiddenLoading">
+      <div class="spinner" v-if="loading">
         <md-progress-spinner class="md-primary" :md-stroke="4"
           :md-diameter="50" md-mode="indeterminate"></md-progress-spinner>
         <div class="spinner-text">正在进行扫码登记</div>
@@ -63,7 +67,8 @@ export default {
 
   data () {
     return {
-      loading: true,
+      init: true,
+      loading: false,
       hiddenLoading: false,
       showSnack: false,
       timeStr: new Date().toLocaleString(),
@@ -87,17 +92,22 @@ export default {
     document.title = '平安成电智慧通行'
 
     setTimeout(() => {
-      this.loading = false
-
+      this.init = false
+      this.loading = true
       setTimeout(() => {
-        this.hiddenLoading = true
-        this.showSnack = true
-
+        this.loading = false
         setTimeout(() => {
-          this.showSnack = false
-        }, 3000)
-      }, 500);
+          this.hiddenLoading = true
+          this.showSnack = true
+          document.getElementById("home").style.background = "white"
+          setTimeout(() => {
+
+            this.showSnack = false
+          }, 3000)
+        }, 500);
+      }, 1000);
     }, 1000);
+
 
     // load name
     const localName = localStorage.getItem('name')
@@ -136,19 +146,17 @@ export default {
   }
 }
 
-.background{
-  background: #f8f8f8;
+.spinner-init{
+  margin-top: 12rem;
 }
 
 .homepage {
-  background: white;
   display: flex;
   justify-content: center;
   padding-top: 40px;
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
-
   .spinner {
     transition: all ease .3s;
     display: flex;
@@ -163,6 +171,7 @@ export default {
       margin-top: 10px;
       opacity: 1;
     }
+
   }
 
   .snack-bar {
@@ -250,9 +259,8 @@ export default {
   &.loading {
     .spinner {
       // transform: translateY(40vh);
-
       .spinner-text {
-        opacity: 0;
+        opacity: 1;
       }
     }
   }
