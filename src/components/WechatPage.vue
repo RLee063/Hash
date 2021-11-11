@@ -42,16 +42,16 @@
 </template>
 
 <script>
-const fakeMessages = `无敌可爱妮妮酱就🙌,你怎么不守男德
-拼爹爹购物群,陶菊：《巴菲龙》
-妹妹,[转账]朋友已确认收款
-文件传输助手,论文.pdf
-订阅号消息,极市平台:如何用深度学习来做检索...
-站起来,LZY:我明天就位
-中国银行微银行,交易提醒
-2021届硕士通知群,叶老师:@小朱 @10班李广 打卡
-指艺推拿预约专用😄2,希:@A指艺王飞飞 我说话给忘了，后天...
-2020暑假留校群,叶老师:打卡`.split('\n').map((v, i) => {
+const fakeMessages = `Forgetting,来吃鸡
+朝阳、小刚都、天丰富、k···,朝阳: 5555 手机尾号
+微机原理,追梦人: 下周交作业怎么样？
+402 项目组,论文.pdf
+PDD,好
+寝室乱斗,许昌:我明天就位
+上海米源饮料,交易提醒
+bird,这个你得自己研究
+狂奔的蜗牛,嗯嗯 谢谢老师
+2020 谢师兄,打卡`.split('\n').map((v, i) => {
   const [name, content] = v.split(',')
   const date = new Date(new Date() - parseInt(Math.random() * 3600 * 1000 * 12))
   const hour = date.getHours().toString().padStart(2, '0')
@@ -140,7 +140,7 @@ export default {
   display: flex;
   flex-direction: column;
   background: #EDEDED;
-  font-weight: bolder;
+  // font-weight: bolder;
   user-select: none;
 
   .wechat-header {
@@ -261,6 +261,7 @@ export default {
         border-bottom: 1px solid #f7f7f7;
 
         .header {
+          font-weight: bolder;
           display: flex;
           align-items: center;
           justify-content: space-between;
